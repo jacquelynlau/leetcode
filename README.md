@@ -1,3 +1,3 @@
-# study study atudy gogogogo
+# study study study gogogogo
 
 documenting my leetcode & dsa training
