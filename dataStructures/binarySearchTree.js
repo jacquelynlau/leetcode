@@ -62,6 +62,98 @@ class BinarySearchTree {
       }
     }
   }
+
+  // Depth First Search:
+  // PreOrder Traversal
+  preOrder(root) {
+    if (root) {
+      console.log(root.value);
+      this.preOrder(root.left);
+      this.preOrder(root.right);
+    }
+  }
+
+  // InOrder Traversal
+  inOrder(root) {
+    if (root) {
+      this.inOrder(root.left);
+      console.log(root.value);
+      this.inOrder(root.right);
+    }
+  }
+
+  // PostOrder Traversal
+  postOrder(root) {
+    if (root) {
+      this.postOrder(root.left);
+      this.postOrder(root.right);
+      console.log(root.value);
+    }
+  }
+
+  // Breadth First Search
+  levelOrder() {
+    const queue = []; // just using array here for simplicity
+    queue.push(this.root);
+    while (queue.length) {
+      let curr = queue.shift();
+      console.log(curr.value);
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+  }
+
+  // Min value
+  min(root) {
+    if (!root.left) {
+      return root.value;
+    } else {
+      // recursively traverse until we get left most leaf node
+      return this.min(root.left);
+    }
+  }
+
+  // Max value
+  max(root) {
+    if (!root.right) {
+      return root.value;
+    } else {
+      // recursively traverse until we get right most leaf node
+      return this.max(root.right);
+    }
+  }
+
+  // BST Node Deletion
+  delete(value) {
+    this.root = this.deleteNode(this.root, value);
+  }
+
+  deleteNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+    if (value < root.value) {
+      root.left = this.deleteNode(root.left);
+    } else if (value > root.value) {
+      root.right = this.deleteNode(root.right);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      }
+      if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right, root.value);
+    }
+    return root;
+  }
 }
 
 const bst = new BinarySearchTree();
@@ -69,7 +161,15 @@ console.log("Tree is empty?", bst.isEmpty());
 bst.insert(10);
 bst.insert(5);
 bst.insert(15);
-console.log("Tree is empty?", bst.isEmpty());
-console.log(bst.search(bst.root, 10));
-console.log(bst.search(bst.root, 5));
-console.log(bst.search(bst.root, 20));
+bst.insert(3);
+
+// console.log("Tree is empty?", bst.isEmpty());
+// console.log(bst.search(bst.root, 10));
+// console.log(bst.search(bst.root, 5));
+// console.log(bst.search(bst.root, 20));
+
+bst.levelOrder();
+// console.log("Min:", bst.min(bst.root));
+// console.log("Max:", bst.max(bst.root));
+bst.delete(15);
+bst.levelOrder();
