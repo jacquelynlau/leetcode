@@ -1,15 +1,15 @@
 // LC 412: Fizz Buzz
 
 /**
-    given an integer, n, return a string array where:
-    if divisible by 3 and 5 --> 'FizzBuzz'
-    if divisible by 3 --> 'Fizz'
-    if divisible by 5 --> 'Buzz'
-    else just return i as a string 
-
-    example: 
-    input: n = 3
-    output: ['1', '2', 'Fizz']
+ * given an integer, n, return a string array where:
+ * if divisible by 3 and 5 --> 'FizzBuzz'
+ * if divisible by 3 --> 'Fizz'
+ * if divisible by 5 --> 'Buzz'
+ * else just return i as a string
+ *
+ * example:
+ * input: n = 3
+ * output: ['1','2','Fizz']
  */
 
 const fizzBuzz = (n) => {
