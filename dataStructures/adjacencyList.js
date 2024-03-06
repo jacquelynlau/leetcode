@@ -46,21 +46,21 @@ class Graph {
 
   display() {
     for (let vertex in this.adjacencyList) {
-      console.log(vertex + " -> " + [...this.adjacencyList[vertex]]);
+      console.log(vertex + ' -> ' + [...this.adjacencyList[vertex]]);
     }
   }
 }
 
 const graph = new Graph();
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addVertex("C");
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
 
-graph.addEdge("A", "B");
-graph.addEdge("B", "C");
+graph.addEdge('A', 'B');
+graph.addEdge('B', 'C');
 
 graph.display();
-console.log(graph.hasEdge("A", "C")); // false
+console.log(graph.hasEdge('A', 'C')); // false
 // graph.removeEdge("A", "B");
-graph.removeVertex("B");
+graph.removeVertex('B');
 graph.display();
